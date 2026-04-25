@@ -1,0 +1,128 @@
+:root {
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #ffffff;
+  --border: #eaeaea;
+  --code-bg: #f4f3ec;
+  --accent: #6C5CE7;
+  --accent-bg: rgba(108, 92, 231, 0.1);
+  --accent-border: rgba(108, 92, 231, 0.5);
+  --social-bg: rgba(244, 243, 236, 0.5);
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+
+  color-scheme: light;
+  color: var(--text);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 🔥 GLOBAL BACKGROUND */
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #f9fafb, #eef2ff, #f0fdfa) !important;
+  min-height: 100vh;
+  overflow-x: hidden; /* 🔥 IMPORTANT */
+}
+
+/* 🔥 FULL WIDTH FIX */
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  text-align: left;
+  border: none;
+  min-height: 100vh;
+  display: block;
+}
+
+/* ================= TYPOGRAPHY ================= */
+
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+}
+
+p {
+  margin: 0;
+}
+
+/* ================= CODE ================= */
+
+code,
+.counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: var(--text-h);
+}
+
+code {
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  background: var(--code-bg);
+}
+
+/* ========================================= */
+/* 🔥🔥🔥 MOBILE RESPONSIVE FIX 🔥🔥🔥 */
+/* ========================================= */
+
+@media (max-width: 768px) {
+
+  :root {
+    font: 15px/140% var(--sans); /* 🔥 reduce base font */
+  }
+
+  h1 {
+    font-size: 28px !important;
+    letter-spacing: -0.5px;
+    margin: 16px 0;
+  }
+
+  h2 {
+    font-size: 18px !important;
+  }
+
+  /* 🔥 FIX OVERFLOW ISSUES */
+  body {
+    overflow-x: hidden;
+  }
+
+  /* 🔥 GLOBAL SPACING RESET */
+  * {
+    max-width: 100%;
+  }
+
+  /* 🔥 BUTTON FIX */
+  button {
+    width: 100%;
+  }
+
+}
