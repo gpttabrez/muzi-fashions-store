@@ -37,24 +37,21 @@ export default function Navbar({
           background:
             "linear-gradient(90deg, rgba(0,0,0,0.85), rgba(20,20,40,0.85), rgba(40,20,60,0.85))",
           backdropFilter: "blur(10px)",
-
           boxShadow: scrolled
             ? "0 8px 30px rgba(0,0,0,0.4)"
             : "none",
-
           padding: isMobile ? "0 1rem" : "0 2.5rem",
           height: 64,
-
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-
           position: "sticky",
           top: 0,
           zIndex: 100
         }}
       >
-        {/* 🔥 LEFT (DESKTOP ONLY) */}
+
+        {/* LEFT */}
         {!isMobile && (
           <div style={{ display: "flex", gap: "2rem" }}>
             {["shop", "collections", "about"].map((item) => (
@@ -69,7 +66,7 @@ export default function Navbar({
           </div>
         )}
 
-        {/* 🔥 MOBILE MENU ICON */}
+        {/* MOBILE MENU */}
         {isMobile && (
           <div
             onClick={() => setMenuOpen(!menuOpen)}
@@ -83,37 +80,52 @@ export default function Navbar({
           </div>
         )}
 
-        {/* 🔥 LOGO */}
-        <div
-          className="serif"
-          onClick={() => setPage("home")}
-          style={{
-            fontSize: isMobile ? "1.2rem" : "1.8rem",
-            fontWeight: 700,
-            cursor: "pointer",
-            color: "#fff",
-            textAlign: "center"
-          }}
-        >
-          MUZI FASHIONS
+{/* 🔥 LOGO + TAGLINE */}
+<div
+  onClick={() => setPage("home")}
+  style={{
+    cursor: "pointer",
+    display: "flex",
+    alignItems: "center",
+    gap: isMobile ? "6px" : "10px",
+    height: "100%"
+  }}
+>
+  {/* LOGO */}
+  <img
+    src="/logo.png"
+    alt="MUZI"
+    style={{
+      height: isMobile ? 38 : 54,
+      objectFit: "contain",
+      display: "block"
+    }}
+  />
 
-          {!isMobile && (
-            <div
-              style={{
-                fontSize: ".55rem",
-                fontFamily: "'Jost', sans-serif",
-                letterSpacing: ".25em",
-                textTransform: "uppercase",
-                color: "var(--accent)",
-                marginTop: -4
-              }}
-            >
-              Style That Speaks Confidence
-            </div>
-          )}
-        </div>
+  {/* TAGLINE WRAPPER */}
+  <div
+    style={{
+      display: "flex",
+      alignItems: "center",
+      height: "100%"
+    }}
+  >
+    <span
+      style={{
+        fontSize: isMobile ? "12px" : "15px",
+        letterSpacing: "2px",
+        color: "var(--accent)",
+        whiteSpace: "nowrap",
+        transform: isMobile ? "translateY(2px)" : "translateY(4px)"
+      }}
+    >
+      A World of Possibilities
+    </span>
+  </div>
 
-        {/* 🔥 RIGHT */}
+</div>  {/* 🔥 ADD THIS LINE */}
+
+        {/* RIGHT */}
         <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
           {!isMobile && (
             <span
@@ -162,7 +174,7 @@ export default function Navbar({
         </div>
       </nav>
 
-      {/* 🔥 MOBILE DROPDOWN MENU */}
+      {/* MOBILE MENU */}
       {isMobile && menuOpen && (
         <div
           style={{
