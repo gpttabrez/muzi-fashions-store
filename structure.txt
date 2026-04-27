@@ -8,8 +8,12 @@ E:.
 |   package.json
 |   README.md
 |   structure.txt
+|   vercel.json
 |   vite.config.js
 |   
++---.vscode
+|       settings.json
+|       
 +---node_modules
 |   |   .package-lock.json
 |   |   
@@ -5105,9 +5109,15 @@ E:.
 |               index.mjs.map
 |               
 +---public
-|       favicon.svg
-|       icons.svg
-|       
+|   |   favicon-new.svg
+|   |   icons.svg
+|   |   logo.png
+|   |   preview.png
+|   |   robots.txt
+|   |   
+|   \---favicon-assets
+|           favicon-new.svg
+|           
 \---src
     |   App.css
     |   App.jsx
