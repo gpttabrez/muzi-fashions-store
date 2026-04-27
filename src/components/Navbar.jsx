@@ -1,6 +1,4 @@
-// src/components/Navbar.jsx
-
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function Navbar({
   page,
@@ -9,25 +7,17 @@ export default function Navbar({
   cartCount,
   setCartOpen
 }) {
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const isMobile = window.innerWidth < 768;
 
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   const linkStyle = (p) => ({
     cursor: "pointer",
-    fontSize: isMobile ? "1rem" : ".9rem",
+    fontSize: ".9rem",
     letterSpacing: ".12em",
     textTransform: "uppercase",
     color: page === p ? "var(--accent)" : "#ffffff",
-    fontWeight: page === p ? 700 : 500,
-    transition: "all .25s ease"
+    fontWeight: page === p ? 700 : 500
   });
 
   return (
@@ -35,14 +25,14 @@ export default function Navbar({
       <nav
         style={{
           background:
-            "linear-gradient(90deg, rgba(0,0,0,0.85), rgba(20,20,40,0.85), rgba(40,20,60,0.85))",
+            "linear-gradient(90deg, rgba(0,0,0,0.9), rgba(20,20,40,0.9), rgba(40,20,60,0.9))",
           backdropFilter: "blur(10px)",
-          boxShadow: scrolled
-            ? "0 8px 30px rgba(0,0,0,0.4)"
-            : "none",
-          padding: isMobile ? "0 1rem" : "0 2.5rem",
-          height: 64,
+
+          // 🔥 FIX: more space on top for desktop
+          padding: isMobile ? "6px 1rem" : "12px 2.5rem 8px",
+
           display: "flex",
+          flexDirection: "row",
           alignItems: "center",
           justifyContent: "space-between",
           position: "sticky",
@@ -52,9 +42,16 @@ export default function Navbar({
       >
 
         {/* LEFT */}
-        {!isMobile && (
+        {isMobile ? (
+          <div
+            onClick={() => setMenuOpen(!menuOpen)}
+            style={{ fontSize: "1.4rem", color: "#fff", cursor: "pointer" }}
+          >
+            ☰
+          </div>
+        ) : (
           <div style={{ display: "flex", gap: "2rem" }}>
-            {["shop", "collections", "about"].map((item) => (
+            {["shop", "collections"].map((item) => (
               <span
                 key={item}
                 style={linkStyle(item)}
@@ -66,110 +63,61 @@ export default function Navbar({
           </div>
         )}
 
-        {/* MOBILE MENU */}
-        {isMobile && (
-          <div
-            onClick={() => setMenuOpen(!menuOpen)}
+        {/* 🔥 CENTER LOGO */}
+        <div
+          onClick={() => setPage("home")}
+          style={{
+            position: "absolute",
+            left: "50%",
+            transform: "translateX(-50%)",
+
+            // 🔥 FIX: proper vertical placement
+            top: isMobile ? "8px" : "10px",
+
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center"
+          }}
+        >
+          <img
+            src="/logo.png"
+            alt="MUZI"
             style={{
-              fontSize: "1.5rem",
-              color: "#fff",
-              cursor: "pointer"
+              height: isMobile ? 30 : 48,
+              objectFit: "contain"
+            }}
+          />
+
+          <span
+            style={{
+              fontSize: isMobile ? "8px" : "12px",
+              color: "var(--accent)",
+              marginTop: "2px",
+              letterSpacing: "1.5px"
             }}
           >
-            ☰
-          </div>
-        )}
-
-{/* 🔥 LOGO + TAGLINE */}
-<div
-  onClick={() => setPage("home")}
-  style={{
-    cursor: "pointer",
-    display: "flex",
-    alignItems: "center",
-    gap: isMobile ? "6px" : "10px",
-    height: "100%"
-  }}
->
-  {/* LOGO */}
-  <img
-    src="/logo.png"
-    alt="MUZI"
-    style={{
-      height: isMobile ? 38 : 54,
-      objectFit: "contain",
-      display: "block"
-    }}
-  />
-
-  {/* TAGLINE WRAPPER */}
-  <div
-    style={{
-      display: "flex",
-      alignItems: "center",
-      height: "100%"
-    }}
-  >
-    <span
-      style={{
-        fontSize: isMobile ? "12px" : "15px",
-        letterSpacing: "2px",
-        color: "var(--accent)",
-        whiteSpace: "nowrap",
-        transform: isMobile ? "translateY(2px)" : "translateY(4px)"
-      }}
-    >
-      A World of Possibilities
-    </span>
-  </div>
-
-</div>  {/* 🔥 ADD THIS LINE */}
+            A World of Possibilities
+          </span>
+        </div>
 
         {/* RIGHT */}
-        <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
-          {!isMobile && (
-            <span
-              style={linkStyle("wishlist")}
-              onClick={() => setPage("wishlist")}
-            >
-              Wishlist{" "}
-              {wishlist.length > 0 && (
-                <span style={{ color: "var(--accent)" }}>
-                  ({wishlist.length})
-                </span>
-              )}
-            </span>
-          )}
+        <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+          <span
+            onClick={() => setPage("wishlist")}
+            style={{ cursor: "pointer", fontSize: "1.2rem" }}
+          >
+            ❤️
+          </span>
 
           <button
             className="btn-primary"
             onClick={() => setCartOpen(true)}
             style={{
-              padding: isMobile ? "6px 12px" : "9px 22px",
-              borderRadius: 8,
-              fontSize: isMobile ? ".75rem" : ".9rem"
+              padding: isMobile ? "4px 10px" : "6px 16px",
+              borderRadius: 8
             }}
           >
-            🛒 {isMobile ? "" : "Cart"}
-            {cartCount > 0 && (
-              <span
-                style={{
-                  background: "#fff",
-                  color: "var(--primary)",
-                  borderRadius: "50%",
-                  width: 18,
-                  height: 18,
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: ".65rem",
-                  marginLeft: 6,
-                  fontWeight: 700
-                }}
-              >
-                {cartCount}
-              </span>
-            )}
+            🛒 {!isMobile && "Cart"}
           </button>
         </div>
       </nav>
@@ -185,14 +133,10 @@ export default function Navbar({
             gap: "1rem"
           }}
         >
-          {["shop", "collections", "about", "wishlist"].map((item) => (
+          {["shop", "collections", "wishlist"].map((item) => (
             <span
               key={item}
-              style={{
-                color: "#fff",
-                fontSize: "1rem",
-                cursor: "pointer"
-              }}
+              style={{ color: "#fff", cursor: "pointer" }}
               onClick={() => {
                 setPage(item);
                 setMenuOpen(false);
