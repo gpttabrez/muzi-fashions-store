@@ -1,140 +1,156 @@
 // src/data/products.js
 
 export const PRODUCTS = [
-  {
-    id: 1,
-    name: "Slim Fit Denim Jeans",
-    category: "Jeans",
-    price: 1999,
-    originalPrice: 2799,
-    tag: "Bestseller",
-    image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246",
-    color: "Blue",
-    sizes: ["30","32","34","36","38"],
-    description: "Classic slim fit denim jeans designed for everyday comfort and modern style.",
 
-    // 🔥 ADDED
-    stock: 4,
+  {
+    id: 9,
+    name: "Beige Formal Trousers",
+    category: "Trousers",
+    price: 1200,
+    originalPrice: 1800,
+    tag: "New",
+    image: "https://res.cloudinary.com/dwpfk8ehe/image/upload/v1777564732/WhatsApp_Image_2026-04-29_at_2.48.07_PM_kudxi4.jpg",
+    color: "Beige",
+    sizes: ["28","30","32","34","36","38","40","42","44"],
+    description: "Premium formal trousers designed for a sharp and elegant look.",
+    stock: 10,
+    bestSeller: false,
+    trending: true
+  },
+  {
+    id: 10,
+    name: "Brown Trousers",
+    category: "Trousers",
+    price: 1200,
+    originalPrice: 1800,
+    tag: "Trending",
+    image: "https://res.cloudinary.com/dwpfk8ehe/image/upload/v1777564731/WhatsApp_Image_2026-04-29_at_2.48.06_PM_asgqhp.jpg",
+    color: "Brown",
+    sizes: ["28","30","32","34","36","38","40","42","44"],
+    description: "Stylish brown denim with a modern slim fit.",
+    stock: 12,
     bestSeller: true,
+    trending: true
+  },
+  {
+    id: 11,
+    name: "Grey Stretch Jeans",
+    category: "Jeans",
+    price: 1200,
+    originalPrice: 1800,
+    tag: "New",
+    image: "https://res.cloudinary.com/dwpfk8ehe/image/upload/v1777564730/WhatsApp_Image_2026-04-29_at_2.48.03_PM_um9r9j.jpg",
+    color: "Grey",
+    sizes: ["28","30","32","34","36","38","40","42","44"],
+    description: "Flexible stretch denim for everyday comfort.",
+    stock: 10,
+    bestSeller: false,
+    trending: true
+  },
+  {
+    id: 12,
+    name: "Olive Green Slim Jeans",
+    category: "Jeans",
+    price: 1200,
+    originalPrice: 1800,
+    tag: "Trending",
+    image: "https://res.cloudinary.com/dwpfk8ehe/image/upload/v1777564730/WhatsApp_Image_2026-04-29_at_2.48.04_PM_1_axqjdn.jpg",
+    color: "Olive",
+    sizes: ["28","30","32","34","36","38","40","42","44"],
+    description: "Modern olive jeans with premium finish.",
+    stock: 10,
+    bestSeller: false,
+    trending: true
+  },
+  {
+    id: 13,
+    name: "White Stretch Denim",
+    category: "Jeans",
+    price: 1200,
+    originalPrice: 1800,
+    tag: "Premium",
+    image: "https://res.cloudinary.com/dwpfk8ehe/image/upload/v1777564730/WhatsApp_Image_2026-04-29_at_2.48.03_PM_um9r9j.jpg",
+    color: "White",
+    sizes: ["28","30","32","34","36","38","40","42","44"],
+    description: "Clean white denim for a bold minimal style.",
+    stock: 8,
+    bestSeller: false,
     trending: false
   },
   {
-    id: 2,
-    name: "Casual Cotton Shirt",
-    category: "Shirts",
-    price: 1499,
-    originalPrice: 2199,
+    id: 14,
+    name: "Classic Blue Denim",
+    category: "Jeans",
+    price: 1200,
+    originalPrice: 1800,
+    tag: "Bestseller",
+    image: "https://res.cloudinary.com/dwpfk8ehe/image/upload/v1777564730/WhatsApp_Image_2026-04-29_at_2.48.05_PM_ufpgqa.jpg",
+    color: "Blue",
+    sizes: ["28","30","32","34","36","38","40","42","44"],
+    description: "Classic blue jeans built for everyday wear.",
+    stock: 15,
+    bestSeller: true,
+    trending: true
+  },
+  {
+    id: 15,
+    name: "Black Slim Fit Jeans",
+    category: "Jeans",
+    price: 1200,
+    originalPrice: 1800,
+    tag: "Bestseller",
+    image: "https://res.cloudinary.com/dwpfk8ehe/image/upload/v1777564730/WhatsApp_Image_2026-04-29_at_2.48.04_PM_kfbf5k.jpg",
+    color: "Black",
+    sizes: ["28","30","32","34","36","38","40","42","44"],
+    description: "Essential black jeans with a sharp fit.",
+    stock: 15,
+    bestSeller: true,
+    trending: true
+  },
+  {
+    id: 16,
+    name: "Sky Blue Checked Trousers",
+    category: "Trousers",
+    price: 1200,
+    originalPrice: 1800,
+    tag: "Premium",
+    image: "https://res.cloudinary.com/dwpfk8ehe/image/upload/v1777564730/WhatsApp_Image_2026-04-29_at_2.48.05_PM_1_lardci.jpg",
+    color: "Sky Blue",
+    sizes: ["28","30","32","34","36","38","40","42","44"],
+    description: "Elegant checked trousers for formal occasions.",
+    stock: 8,
+    bestSeller: false,
+    trending: false
+  },
+  {
+    id: 17,
+    name: "Grey Formal Pants",
+    category: "Trousers",
+    price: 1200,
+    originalPrice: 1800,
     tag: "New",
-    image: "https://images.unsplash.com/photo-1603252109303-2751441dd157",
-    color: "White",
+    image: "https://res.cloudinary.com/dwpfk8ehe/image/upload/v1777564730/WhatsApp_Image_2026-04-29_at_2.48.06_PM_1_fklzfa.jpg",
+    color: "Grey",
+    sizes: ["28","30","32","34","36","38","40","42","44"],
+    description: "Professional grey trousers for office wear.",
+    stock: 10,
+    bestSeller: false,
+    trending: true
+  },
+  {
+    id: 18,
+    name: "Printed Casual Shirt",
+    category: "Shirts",
+    price: 1200,
+    originalPrice: 1800,
+    tag: "Trending",
+    image: "https://res.cloudinary.com/dwpfk8ehe/image/upload/v1777564732/WhatsApp_Image_2026-04-29_at_2.48.07_PM_2_jn7sw5.jpg",
+    color: "Multicolor",
     sizes: ["S","M","L","XL"],
-    description: "Premium cotton shirt perfect for casual outings and daily wear.",
-
-    // 🔥 ADDED
+    description: "Vibrant printed shirt for a bold casual look.",
     stock: 12,
     bestSeller: false,
     trending: true
-  },
-  {
-    id: 3,
-    name: "Six Pocket Cargo Pants",
-    category: "Six Pockets",
-    price: 1899,
-    originalPrice: 2499,
-    tag: "Trending",
-    image: "https://images.unsplash.com/photo-1593030761757-71fae45fa0e7",
-    color: "Olive",
-    sizes: ["30","32","34","36"],
-    description: "Utility cargo pants with six pockets for style and functionality.",
-
-    // 🔥 ADDED
-    stock: 7,
-    bestSeller: false,
-    trending: true
-  },
-  {
-    id: 4,
-    name: "Men's Casual Jacket",
-    category: "Jackets",
-    price: 2999,
-    originalPrice: 3999,
-    tag: "Premium",
-    image: "https://images.unsplash.com/photo-1516826957135-700dedea698c?w=800&q=80",
-    color: "Black",
-    sizes: ["M","L","XL"],
-    description: "Stylish casual jacket for all seasons with a modern fit.",
-
-    // 🔥 ADDED
-    stock: 3,
-    bestSeller: false,
-    trending: false
-  },
-  {
-    id: 5,
-    name: "Graphic Casual T-Shirt",
-    category: "Casuals",
-    price: 899,
-    originalPrice: 1299,
-    tag: "New",
-    image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800&q=80&auto=format&fit=crop",
-    color: "Grey",
-    sizes: ["S","M","L","XL"],
-    description: "Comfortable cotton t-shirt with trendy graphic print.",
-
-    // 🔥 ADDED
-    stock: 15,
-    bestSeller: false,
-    trending: true
-  },
-  {
-    id: 6,
-    name: "Men’s Sneakers",
-    category: "Shoes",
-    price: 2499,
-    originalPrice: 3499,
-    tag: "Sale",
-    image: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=800&q=80",
-    color: "White",
-    sizes: ["7","8","9","10"],
-    description: "Lightweight sneakers designed for everyday comfort and street style.",
-
-    // 🔥 ADDED
-    stock: 6,
-    bestSeller: false,
-    trending: false
-  },
-  {
-    id: 7,
-    name: "Leather Belt",
-    category: "Accessories",
-    price: 799,
-    originalPrice: 1199,
-    tag: "Bestseller",
-    image: "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=800&q=80&auto=format&fit=crop",
-    color: "Brown",
-    sizes: ["Free Size"],
-    description: "Premium leather belt to complete your outfit.",
-
-    // 🔥 ADDED
-    stock: 2,
-    bestSeller: true,
-    trending: false
-  },
-  {
-    id: 8,
-    name: "Denim Jacket",
-    category: "Jackets",
-    price: 3299,
-    originalPrice: 4499,
-    tag: "Premium",
-    image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=800&q=80&auto=format&fit=crop",
-    color: "Blue",
-    sizes: ["M","L","XL"],
-    description: "Classic denim jacket for a rugged and stylish look.",
-
-    // 🔥 ADDED
-    stock: 5,
-    bestSeller: false,
-    trending: true
   }
+
 ];
