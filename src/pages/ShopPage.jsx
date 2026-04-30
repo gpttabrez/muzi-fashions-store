@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
 import { CATEGORIES } from "../data/categories";
+import { PRODUCTS } from "../data/products"; // 🔥 ADDED
 
 /* 🔥 COLOR HELPER */
 const c = (v) => {
@@ -36,6 +37,25 @@ export default function ShopPage({
       setIsMobile(window.innerWidth < 768);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // 🔥 🔥 🔥 MAIN FIX (AUTO OPEN PRODUCT)
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get("product");
+
+    if (!productId) return;
+
+    const product = PRODUCTS.find(
+      (p) => String(p.id) === String(productId)
+    );
+
+    if (product) {
+      setQuickView(product); // ✅ Opens QuickView automatically
+
+      // 🔥 OPTIONAL: Clean URL after opening
+      window.history.replaceState({}, "", "/");
+    }
   }, []);
 
   return (
@@ -85,10 +105,8 @@ export default function ShopPage({
         />
       </div>
 
-      {/* 🔥 CATEGORY WITH REAL SCROLL HINT */}
+      {/* CATEGORY */}
       <div style={{ position: "relative", marginBottom: "2rem" }}>
-
-        {/* LEFT FADE */}
         <div
           style={{
             position: "absolute",
@@ -103,7 +121,6 @@ export default function ShopPage({
           }}
         />
 
-        {/* RIGHT FADE */}
         <div
           style={{
             position: "absolute",
@@ -118,14 +135,13 @@ export default function ShopPage({
           }}
         />
 
-        {/* SCROLL ROW */}
         <div
           style={{
             display: "flex",
             gap: "10px",
             overflowX: "auto",
             paddingBottom: "8px",
-            paddingRight: "10px" // 👈 ensures next pill peek
+            paddingRight: "10px"
           }}
         >
           {CATEGORIES.map((cat) => {
@@ -137,21 +153,15 @@ export default function ShopPage({
                 onClick={() => setCategory(cat)}
                 style={{
                   flex: "0 0 auto",
-
-                  /* 🔥 FINAL FIX */
                   width: isMobile ? "45%" : "auto",
-
                   padding: "10px",
                   borderRadius: 30,
                   whiteSpace: "nowrap",
-
                   background: active
                     ? "linear-gradient(90deg, #000, #1a1a2e, #2a0a3d)"
                     : "rgba(0,0,0,0.25)",
-
                   color: active ? "var(--accent)" : "#fff",
                   border: "1px solid rgba(255,255,255,0.2)",
-
                   fontSize: isMobile ? ".75rem" : ".8rem",
                   textTransform: "uppercase"
                 }}
