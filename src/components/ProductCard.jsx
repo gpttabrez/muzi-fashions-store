@@ -50,59 +50,33 @@ export default function ProductCard({
   // ✅ UPDATED HERE
   const shareUrl = `https://muzi-preview.vercel.app/product/${product.id}`;
 
-  const getMessage = () => {
-    const base = `
-MUZI Fashions
-
-${product.name}
-
-₹${product.price}
-Sizes: ${product.sizes?.join(", ") || "Available"}
-`;
-
-    const isLowStock = product.stock && product.stock <= 5;
-    const isTrending = product.trending;
-    const isBestSeller = product.bestSeller;
-    const isPremium = product.price >= 2000;
-
-    const getCategoryLine = () => {
-      switch (product.category?.toLowerCase()) {
-        case "shirts":
-          return "Sharp. Effortless. Everyday essential.";
-        case "tshirts":
-          return "Casual comfort meets modern style.";
-        case "ethnic":
-          return "Tradition redefined with elegance.";
-        case "hoodies":
-          return "Warm. Bold. Street-ready.";
-        case "jeans":
-          return "Built for comfort. Styled for impact.";
-        case "jackets":
-          return "Layer up with confidence.";
-        default:
-          return "Crafted for style. Designed for confidence.";
-      }
-    };
-
-    let signalLine = "";
-
-    if (isLowStock) {
-      signalLine = "Limited pieces available.";
-    } else if (isBestSeller) {
-      signalLine = "One of our most in-demand picks.";
-    } else if (isTrending) {
-      signalLine = "Currently trending.";
-    } else if (isPremium) {
-      signalLine = "Premium quality. Elevated finish.";
+const getMessage = () => {
+  const getCategoryLine = () => {
+    switch (product.category?.toLowerCase()) {
+      case "shirts":
+        return "Sharp. Effortless. Everyday essential.";
+      case "tshirts":
+        return "Casual comfort meets modern style.";
+      case "ethnic":
+        return "Tradition redefined with elegance.";
+      case "hoodies":
+        return "Warm. Bold. Street-ready.";
+      case "jeans":
+        return "Built for comfort. Styled for impact.";
+      case "jackets":
+        return "Layer up with confidence.";
+      default:
+        return "Crafted for style. Designed for confidence.";
     }
-
-    return `${base}
-${getCategoryLine()}
-${signalLine ? "\n" + signalLine : ""}
-
-Shop now:
-${shareUrl}`;
   };
+
+  return `${shareUrl}
+
+${product.name} — ₹${product.price}
+Sizes: ${product.sizes?.join(", ") || "Available"}
+
+${getCategoryLine()}`;
+};
 
   const message = getMessage();
 
