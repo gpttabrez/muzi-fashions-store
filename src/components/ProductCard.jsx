@@ -46,6 +46,84 @@ export default function ProductCard({
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  /* 🔥 SHARE SYSTEM */
+  // ✅ UPDATED HERE
+  const shareUrl = `https://muzi-preview.vercel.app/product/${product.id}?v=${Date.now()}`;
+
+  const getMessage = () => {
+    const base = `
+MUZI Fashions
+
+${product.name}
+
+₹${product.price}
+Sizes: ${product.sizes?.join(", ") || "Available"}
+`;
+
+    const isLowStock = product.stock && product.stock <= 5;
+    const isTrending = product.trending;
+    const isBestSeller = product.bestSeller;
+    const isPremium = product.price >= 2000;
+
+    const getCategoryLine = () => {
+      switch (product.category?.toLowerCase()) {
+        case "shirts":
+          return "Sharp. Effortless. Everyday essential.";
+        case "tshirts":
+          return "Casual comfort meets modern style.";
+        case "ethnic":
+          return "Tradition redefined with elegance.";
+        case "hoodies":
+          return "Warm. Bold. Street-ready.";
+        case "jeans":
+          return "Built for comfort. Styled for impact.";
+        case "jackets":
+          return "Layer up with confidence.";
+        default:
+          return "Crafted for style. Designed for confidence.";
+      }
+    };
+
+    let signalLine = "";
+
+    if (isLowStock) {
+      signalLine = "Limited pieces available.";
+    } else if (isBestSeller) {
+      signalLine = "One of our most in-demand picks.";
+    } else if (isTrending) {
+      signalLine = "Currently trending.";
+    } else if (isPremium) {
+      signalLine = "Premium quality. Elevated finish.";
+    }
+
+    return `${base}
+${getCategoryLine()}
+${signalLine ? "\n" + signalLine : ""}
+
+Shop now:
+${shareUrl}`;
+  };
+
+  const message = getMessage();
+
+  const shareWhatsApp = (e) => {
+    e.stopPropagation();
+    const url = `https://wa.me/?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
+  };
+
+  const shareFacebook = (e) => {
+    e.stopPropagation();
+    const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+    window.open(url, "_blank");
+  };
+
+  const copyLink = async (e) => {
+    e.stopPropagation();
+    await navigator.clipboard.writeText(message);
+    alert("Product details copied!");
+  };
+
   return (
     <div
       className="product-card"
@@ -123,16 +201,13 @@ export default function ProductCard({
             bottom: 10,
             left: "50%",
             transform: "translateX(-50%)",
-
             width: isMobile ? "85%" : "auto",
             padding: isMobile ? "8px" : "8px 22px",
             fontSize: ".75rem",
             borderRadius: 6,
-
             background: isMobile
               ? "rgba(0,0,0,0.7)"
               : "",
-
             backdropFilter: isMobile ? "blur(6px)" : ""
           }}
         >
@@ -206,6 +281,13 @@ export default function ProductCard({
           >
             {discount}% OFF
           </span>
+        </div>
+
+        {/* 🔥 SHARE BUTTONS */}
+        <div style={{ display: "flex", gap: "6px", marginTop: "8px" }}>
+          <button onClick={shareWhatsApp}>🟢</button>
+          <button onClick={shareFacebook}>🔵</button>
+          <button onClick={copyLink}>📋</button>
         </div>
 
         {/* ADD TO CART */}
