@@ -69,36 +69,31 @@ export default function QuickViewModal({
         }}
       >
 
-        {/* 🔥 FIXED CLOSE BUTTON */}
+        {/* CLOSE */}
         <button
           onClick={() => setQuickView(null)}
           style={{
             position: "absolute",
             top: 12,
             right: 12,
-
             background: "rgba(0,0,0,0.6)",
             color: "#fff",
-
             border: "none",
             width: 32,
             height: 32,
-
             borderRadius: "50%",
             fontSize: "1.2rem",
             cursor: "pointer",
-
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-
             zIndex: 10
           }}
         >
           ×
         </button>
 
-        {/* 🔥 IMAGE */}
+        {/* IMAGE */}
         <div
           style={{
             width: isMobile ? "100%" : 300,
@@ -118,7 +113,7 @@ export default function QuickViewModal({
           />
         </div>
 
-        {/* 🔥 CONTENT */}
+        {/* CONTENT */}
         <div
           style={{
             padding: isMobile ? "1.2rem" : "2.5rem",
@@ -233,29 +228,50 @@ export default function QuickViewModal({
             </div>
 
             <div
-              style={{
-                display: "flex",
-                gap: ".4rem",
-                overflowX: "auto"
-              }}
+              style={
+                isMobile
+                  ? {
+                      display: "flex",
+                      overflowX: "auto",
+                      gap: "6px",
+                      paddingBottom: "6px"
+                    }
+                  : {
+                      display: "grid",
+                      gridTemplateColumns: "repeat(5, 1fr)",
+                      gap: "6px"
+                    }
+              }
             >
               {quickView.sizes.map((s) => (
                 <button
                   key={s}
                   onClick={() => setSelectedSize(s)}
                   style={{
-                    padding: "8px 14px",
-                    borderRadius: 20,
+                    flex: isMobile ? "0 0 auto" : undefined,
+
+                    // 🔥 REAL FIX HERE
+                    width: isMobile ? "fit-content" : "100%",
+                    minWidth: isMobile ? "34px" : "100%",
+
+                    padding: isMobile ? "4px 8px" : "8px",
+                    fontSize: isMobile ? "0.7rem" : "0.8rem",
+
+                    borderRadius: 12,
+
                     border:
                       selectedSize === s
                         ? "2px solid var(--accent)"
                         : "1px solid #ccc",
+
                     background:
                       selectedSize === s
                         ? "var(--accent)"
                         : "#fff",
+
                     color:
                       selectedSize === s ? "#fff" : "#000",
+
                     cursor: "pointer",
                     whiteSpace: "nowrap"
                   }}
