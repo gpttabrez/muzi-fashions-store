@@ -48,7 +48,7 @@ export default function ProductCard({
 
   /* 🔥 SHARE SYSTEM */
   // ✅ UPDATED HERE
-  const shareUrl = `https://muzi-preview.vercel.app/product/${product.id}?v=${Date.now()}`;
+  const shareUrl = `https://muzi-preview.vercel.app/product/${product.id}`;
 
   const getMessage = () => {
     const base = `
